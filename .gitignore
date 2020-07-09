@@ -1,5 +1,6 @@
 # dependencies
-/server/node_modules
+/server/node_modules/
+!node_modules/.gitkeep 
 /.pnp
 .pnp.js
 
@@ -7,4 +8,4 @@
 /coverage
 
 # production
-/build
+/build"node_modules/" 
