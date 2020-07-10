@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
-import { graphql, compose } from 'react-apollo';
+import { graphql } from 'react-apollo';
+//compose not exported from react-apollo anymore
+//compose was removed from React Apollo 3 
+//(see the Breaking Changes). Now, to use compose
+//use lodash's flowRight.
+//To install lodash's flowRight use:
+//yarn add lodash.flowright or npm i lodash.flowright
+//to import: import {flowRight as compose} from 'lodash'; 
+//or like below
+import * as compose from 'lodash.flowright';
 import { getAuthorsQuery, addBookMutation } from '../queries/queries';
 
 class AddBook extends Component {
@@ -26,7 +35,13 @@ class AddBook extends Component {
 
   submitForm(e){
     e.preventDefault();
-    this.props.addBookMutation()
+    this.props.addBookMutation({
+      variables: {
+        name: this.state.name,
+        genre: this.state.genre,
+        authorId: this.state.authorId
+      }
+    })
   }
   render(){
   return (
