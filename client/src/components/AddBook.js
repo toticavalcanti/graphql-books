@@ -9,7 +9,7 @@ import { graphql } from 'react-apollo';
 //to import: import {flowRight as compose} from 'lodash'; 
 //or like below
 import * as compose from 'lodash.flowright';
-import { getAuthorsQuery, addBookMutation } from '../queries/queries';
+import { getAuthorsQuery, addBookMutation, getBooksQuery } from '../queries/queries';
 
 class AddBook extends Component {
 
@@ -40,7 +40,8 @@ class AddBook extends Component {
         name: this.state.name,
         genre: this.state.genre,
         authorId: this.state.authorId
-      }
+      },
+      refetchQueries: [{ query: getBooksQuery }]
     })
   }
   render(){
